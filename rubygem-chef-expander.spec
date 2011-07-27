@@ -11,7 +11,7 @@ Release: 1%{?buildstamp}%{?dist}
 Group: Development/Languages
 License: GPLv2+ or Ruby
 URL: http://wiki.opscode.com/display/chef
-Source0: http://rubygems.org/downloads/%{gemname}-%{version}.rc.4.1.gem
+Source0: http://rubygems.org/downloads/%{gemname}-%{version}.rc.1.gem
 Source1: chef-expander.init
 Source2: chef-expander.sysconfig
 Source3: chef-expander.logrotate
