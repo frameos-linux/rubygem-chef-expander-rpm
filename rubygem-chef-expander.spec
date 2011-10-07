@@ -7,7 +7,7 @@
 Summary: A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure
 Name: rubygem-%{gemname}
 Version: 0.10.4
-Release: 1%{?buildstamp}%{?dist}
+Release: 2%{?buildstamp}%{?dist}
 Group: Development/Languages
 License: GPLv2+ or Ruby
 URL: http://wiki.opscode.com/display/chef
@@ -16,7 +16,7 @@ Source1: chef-expander.init
 Source2: chef-expander.sysconfig
 Source3: chef-expander.logrotate
 Source4: config.rb
-
+Source5: chef-expander-%{version}.gemspec
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: rubygems
 Requires: rubygem(mixlib-log) >= 1.2.0
@@ -70,6 +70,7 @@ chmod +x %{buildroot}/etc/rc.d/init.d/chef-expander
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/chef-expander
 cp %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/chef-expander
 cp %{SOURCE4} %{buildroot}%{_sysconfdir}/chef/expander.rb
+cp %{SOURCE5} %{buildroot}%{gemdir}/specifications/%{gemname}-%{version}.gemspec
 
 %clean
 rm -rf %{buildroot}
