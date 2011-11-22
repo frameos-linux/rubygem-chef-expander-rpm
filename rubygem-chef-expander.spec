@@ -2,21 +2,22 @@
 %define ruby_sitelib %(ruby -rrbconfig -e "puts Config::CONFIG['sitelibdir']")
 %define gemdir %(ruby -rubygems -e 'puts Gem::dir' 2>/dev/null)
 %define gemname chef-expander
-%define geminstdir %{gemdir}/gems/%{gemname}-%{version}
+%define prerelease .rc.2
+%define geminstdir %{gemdir}/gems/%{gemname}-%{version}%{?prerelease}
 
 Summary: A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure
 Name: rubygem-%{gemname}
-Version: 0.10.4
-Release: 2%{?buildstamp}%{?dist}
+Version: 0.10.6
+Release: 0rc2%{?buildstamp}%{?dist}
 Group: Development/Languages
 License: GPLv2+ or Ruby
 URL: http://wiki.opscode.com/display/chef
-Source0: http://rubygems.org/downloads/%{gemname}-%{version}.gem
+Source0: http://rubygems.org/downloads/%{gemname}-%{version}%{?prerelease}.gem
 Source1: chef-expander.init
 Source2: chef-expander.sysconfig
 Source3: chef-expander.logrotate
 Source4: config.rb
-Source5: chef-expander-%{version}.gemspec
+Source5: chef-expander-%{version}%{?prerelease}.gemspec
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: rubygems
 Requires: rubygem(mixlib-log) >= 1.2.0
@@ -30,7 +31,7 @@ Requires: rubygem(fast_xs) >= 0.7.3
 Requires: rubygem(highline) >= 1.6.1
 BuildRequires: rubygems
 BuildArch: noarch
-Provides: rubygem(%{gemname}) = %{version}
+Provides: rubygem(%{gemname}) = %{version}%{?prerelease}
 
 Requires(post): chkconfig
 Requires(preun): chkconfig
@@ -70,7 +71,7 @@ chmod +x %{buildroot}/etc/rc.d/init.d/chef-expander
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/chef-expander
 cp %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/chef-expander
 cp %{SOURCE4} %{buildroot}%{_sysconfdir}/chef/expander.rb
-cp %{SOURCE5} %{buildroot}%{gemdir}/specifications/%{gemname}-%{version}.gemspec
+cp %{SOURCE5} %{buildroot}%{gemdir}/specifications/%{gemname}-%{version}%{?prerelease}.gemspec
 
 %clean
 rm -rf %{buildroot}
@@ -100,12 +101,12 @@ fi
 %{_bindir}/chef-expander
 %{_bindir}/chef-expander-vnode
 %{_bindir}/chef-expanderctl
-%{gemdir}/gems/%{gemname}-%{version}/
-%doc %{gemdir}/doc/%{gemname}-%{version}
+%{gemdir}/gems/%{gemname}-%{version}%{?prerelease}/
+%doc %{gemdir}/doc/%{gemname}-%{version}%{?prerelease}
 %doc %{geminstdir}/README.rdoc
 %doc %{geminstdir}/LICENSE
-%{gemdir}/cache/%{gemname}-%{version}.gem
-%{gemdir}/specifications/%{gemname}-%{version}.gemspec
+%{gemdir}/cache/%{gemname}-%{version}%{?prerelease}.gem
+%{gemdir}/specifications/%{gemname}-%{version}%{?prerelease}.gemspec
 %config(noreplace) %{_sysconfdir}/sysconfig/chef-expander
 %config(noreplace) %{_sysconfdir}/logrotate.d/chef-expander
 %{_sysconfdir}/rc.d/init.d/chef-expander
