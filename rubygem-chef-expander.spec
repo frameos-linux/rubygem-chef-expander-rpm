@@ -7,7 +7,7 @@
 
 Summary: A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure
 Name: rubygem-%{gemname}
-Version: 0.10.6
+Version: 10.12.0
 Release: 1%{?buildstamp}%{?dist}
 Group: Development/Languages
 License: GPLv2+ or Ruby
@@ -21,14 +21,22 @@ Source5: chef-expander-%{version}%{?prerelease}.gemspec
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: rubygems
 Requires: rubygem(mixlib-log) >= 1.2.0
-Requires: rubygem(amqp) = 0.6.7
+Requires: rubygem(amqp) >= 0.6.7
+Requires: rubygem(ampq) < 0.7.0
 Requires: rubygem(eventmachine) >= 0.12.10
+Requires: rubygem(eventmachine) < 0.13.0
 Requires: rubygem(em-http-request) >= 0.2.11
-Requires: rubygem(yajl-ruby) >= 0.7.7
+Requires: rubygem(em-http-request) < 0.3.0
+Requires: rubygem(yajl-ruby) >= 1.0
+Requires: rubygem(yajl-ruby) < 2.0
 Requires: rubygem(uuidtools) >= 2.1.1
+Requires: rubygem(uuidtools) < 2.2.0
 Requires: rubygem(bunny) >= 0.6.0
+Requires: rubygem(bunny) < 0.7.0
 Requires: rubygem(fast_xs) >= 0.7.3
+Requires: rubygem(fast_xs) < 0.8.0
 Requires: rubygem(highline) >= 1.6.1
+Requires: rubygem(highline) < 1.7.0
 BuildRequires: rubygems
 BuildArch: noarch
 Provides: rubygem(%{gemname}) = %{version}%{?prerelease}
@@ -113,6 +121,9 @@ fi
 %{_sysconfdir}/chef/
 
 %changelog
+* Wed Aug 31 2012 Sean P. Kane <spkane00@gmail.com> - 10.12.0-1
+- bumped version 10.12.0
+
 * Wed Dec 14 2011 Sergio Rubio <rubiojr@frameos.org> - 0.10.6-1
 - bumped version 0.10.6
 
