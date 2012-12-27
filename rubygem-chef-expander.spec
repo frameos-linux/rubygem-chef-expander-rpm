@@ -22,7 +22,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: rubygems
 Requires: rubygem(mixlib-log) >= 1.2.0
 Requires: rubygem(amqp) >= 0.6.7
-Requires: rubygem(ampq) < 0.7.0
+Requires: rubygem(amqp) < 0.7.0
 Requires: rubygem(eventmachine) >= 0.12.10
 Requires: rubygem(eventmachine) < 0.13.0
 Requires: rubygem(em-http-request) >= 0.2.11
@@ -123,6 +123,9 @@ fi
 %changelog
 * Fri Dec 21 2012 Sean P. Kane <spkane00@gmail.com> - 10.16.2-1
 - bumped version 10.16.2
+
+* Thu Sep 13 2012 Sergio Rubio <rubiojr@frameos.org> - 10.14.2-2
+- Fixed amqp require
 
 * Tue Sep 11 2012 Sean P. Kane <spkane00@gmail.com> - 10.14.2-1
 - bumped version 10.14.2
