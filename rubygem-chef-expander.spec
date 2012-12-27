@@ -8,7 +8,7 @@
 Summary: A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure
 Name: rubygem-%{gemname}
 Version: 10.16.4
-Release: 1%{?buildstamp}%{?dist}
+Release: 2%{?buildstamp}%{?dist}
 Group: Development/Languages
 License: GPLv2+ or Ruby
 URL: http://wiki.opscode.com/display/chef
@@ -26,7 +26,7 @@ Requires: rubygem(amqp) < 0.7.0
 Requires: rubygem(eventmachine) >= 0.12.10
 Requires: rubygem(eventmachine) < 0.13.0
 Requires: rubygem(em-http-request) >= 0.2.11
-Requires: rubygem(em-http-request) < 0.3.0
+Requires: rubygem(em-http-request) < 0.3.1
 Requires: rubygem(yajl-ruby) >= 1.0
 Requires: rubygem(yajl-ruby) < 2.0
 Requires: rubygem(uuidtools) >= 2.1.1
@@ -34,7 +34,7 @@ Requires: rubygem(uuidtools) < 2.2.0
 Requires: rubygem(bunny) >= 0.6.0
 Requires: rubygem(bunny) < 0.7.0
 Requires: rubygem(fast_xs) >= 0.7.3
-Requires: rubygem(fast_xs) < 0.8.0
+Requires: rubygem(fast_xs) < 0.8.1
 Requires: rubygem(highline) >= 1.6.1
 Requires: rubygem(highline) < 1.7.0
 BuildRequires: rubygems
@@ -121,6 +121,10 @@ fi
 %{_sysconfdir}/chef/
 
 %changelog
+* Thu Dec 27 2012 Sean P. Kane <spkane00@gmail.com> - 10.16.4-2
+- bumped version 10.16.4
+- tweaked fast_xs and em-http-request versions to match what is in rbel repo
+
 * Fri Dec 21 2012 Sean P. Kane <spkane00@gmail.com> - 10.16.2-1
 - bumped version 10.16.2
 
